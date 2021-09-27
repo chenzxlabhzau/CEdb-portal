@@ -15,3 +15,4 @@ static/
 *.njsproj
 *.sln
 db.py
+config.py
