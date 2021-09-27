@@ -14,5 +14,4 @@ static/
 *.ntvs*
 *.njsproj
 *.sln
-config.py
 db.py
