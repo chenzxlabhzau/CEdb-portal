@@ -1,0 +1,17 @@
+.mat-card-title {
+  display: inline;
+  margin-left: -17px;
+  font-size: 20px;
+}
+ol{
+  padding-left: 16px;
+}
+h3{
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}

@@ -1,0 +1,25 @@
+.mat-column-motif_name {
+  flex: 0 0 140px;
+}
+.mat-column-pvalue {
+  flex: 0 0 80px;
+}
+.mat-column-length_target {
+  justify-content: center;
+  flex: 0 0 140px;
+}
+.mat-column-percent_target {
+  justify-content: center;
+  flex: 0 0 140px;
+}
+.mat-column-length_background {
+  justify-content: center;
+  flex: 0 0 140px;
+}
+.mat-column-percent_background {
+  justify-content: center;
+  flex: 0 0 140px;
+}
+.mat-column-motif {
+  justify-content: center;
+}

@@ -1,0 +1,85 @@
+<div>
+  <h1 class="page-header" style="margin-top: 30px">Download</h1>
+</div>
+
+<mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+  <mat-card-header>
+    <mat-card-title >Summary information</mat-card-title>
+  </mat-card-header>
+  <table class="table">
+    <tbody>
+      <tr class="border-bottom">
+        <td style="font-weight: 500">Sample information:</td><td><a [href]="static + '/sample_info.csv'">sample_info.csv</a></td>
+      </tr>
+      <tr class="border-bottom">
+        <td style="font-weight: 500">Super enhancer:</td><td><a [href]="static + '/super_enhancer.txt'">super_enhancer.txt</a> | <a [href]="static + '/super_enhancer.json'">super_enhancer.json</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <mat-card-header style="margin-top: 10px">
+    <mat-card-title>Sample information</mat-card-title>
+  </mat-card-header>
+  <mat-form-field>
+    <input matInput placeholder="Input your Query" #input />
+    <button mat-icon-button color="warn" matPrefix>
+      <mat-icon style="font-size: 150%;">search</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-progress-bar mode="query" color="warn"></mat-progress-bar>
+  </div>
+
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortDisableClear>
+    <ng-container matColumnDef="sample_id">
+      <mat-header-cell *matHeaderCellDef>Sample id</mat-header-cell>
+      <mat-cell class="description-cell" *matCellDef="let sample">
+        <a [routerLink]="['/sample', sample.sample_id]" target="_blank">{{ sample.sample_id }}</a>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="cancer_nor">
+      <mat-header-cell *matHeaderCellDef>Cancer type</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample">{{ sample.cancer_nor }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="GEO_id">
+      <mat-header-cell *matHeaderCellDef>GSE</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample">
+        <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{sample.GEO_id}}" >{{ sample.GEO_id }}</a>
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="GSM_id">
+      <mat-header-cell *matHeaderCellDef>GSM</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample">
+        <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{sample.GSM_id}}" >{{ sample.GSM_id }}</a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Biosample_type">
+      <mat-header-cell *matHeaderCellDef>Source type</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample">{{ sample.Biosample_type }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="super_enhancer_number">
+      <mat-header-cell *matHeaderCellDef>SE number</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample">{{ sample.super_enhancer_number | number }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="super_enhancer">
+      <mat-header-cell *matHeaderCellDef>Super enhancer</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample"><a style="height: 24px" [href]="static + '/SE/' + sample.sample_id +'_superEhancer.txt'"><mat-icon>cloud_download</mat-icon></a></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="typical_enhancer">
+      <mat-header-cell *matHeaderCellDef>Typical enhancer</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample"><a style="height: 24px" [href]="static + '/broad_peak/' + sample.sample_id +'.macs2_peaks.broadPeak'"><mat-icon>cloud_download</mat-icon></a></mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="TF">
+      <mat-header-cell *matHeaderCellDef>Transcription factor</mat-header-cell>
+      <mat-cell class="duration-cell" *matCellDef="let sample"><a style="height: 24px" [href]="static + '/TF/' + sample.sample_id +'.knownResults.txt'"><mat-icon>cloud_download</mat-icon></a></mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="dataSource.resultLength" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+
+</mat-card>

@@ -1,0 +1,24 @@
+<div fxLayout="column" fxFill >
+  <div fxFlex="none">
+    <h1 class="page-header" style="margin-top: 30px">Super Enhancer</h1>
+  </div>
+  <div fxFlex class="not-float">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <app-enhancer-info fxFlex="grow" [enhancer_id]="enhancer_id"></app-enhancer-info>
+      <div fxFlex fxLayout="column" class="not-float">
+        <div fxFlex>
+          <mat-tab-group mat-align-tabs="start" dynamicHeight color="warn">
+            <mat-tab *ngFor="let tab of eqtlTypes">
+              <ng-template mat-tab-label>{{ tab.show }}</ng-template>
+              <ng-template matTabContent>
+                <app-enhancer-eqtl  [enhancer_id]="enhancer_id" [eqtlType]="tab.label"></app-enhancer-eqtl>
+
+              </ng-template>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

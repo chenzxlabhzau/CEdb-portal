@@ -1,0 +1,14 @@
+/*a.nav-link:hover {*/
+/*  background-color: bisque;*/
+/*}*/
+
+a.nav-link:focus {
+}
+a.navactive {
+  color: #da4233;
+  border-bottom: 2px solid #da4233;
+}
+@media (min-width:1300px) {.container,.container-lg,.container-md,.container-sm{max-width:1250px}
+}
+
+

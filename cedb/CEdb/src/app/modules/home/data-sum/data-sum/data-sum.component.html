@@ -1,0 +1,74 @@
+<div fxFlex="grow" fxLayout="column" fxLayoutGap="10px">
+  <div fxFlex="grow" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+    <mat-card  fxFlex="50%" fxLayout="column" fxLayoutGap="5px" appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>Data Portal Summary</mat-card-title>
+      </mat-card-header>
+      <mat-card>
+        <mat-card-subtitle>
+          Primary tissue
+        </mat-card-subtitle>
+        <div class="stat-column">
+          <div class="stat-row">
+            <div class="stat-card">
+              <div class="stat-title">Cancers</div>
+              <div class="stat-span"><span>34</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Projects</div>
+              <div class="stat-span"><span>56</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Samples</div>
+              <div class="stat-span"><span>806</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Super enhancer</div>
+              <div class="stat-span"><span>500,657</span></div>
+            </div>
+          </div>
+      </div>
+      </mat-card>
+      <mat-card>
+        <mat-card-subtitle>
+          Cell line
+        </mat-card-subtitle>
+        <div class="stat-column">
+          <div class="stat-row">
+            <div class="stat-card">
+              <div class="stat-title">Cancers</div>
+              <div class="stat-span"><span>35</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Projects</div>
+              <div class="stat-span"><span>159</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Samples</div>
+              <div class="stat-span"><span>677</span></div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-title">Super enhancer</div>
+              <div class="stat-span"><span>435,313</span></div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </mat-card>
+    <mat-card  fxFlex="50%" appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>News</mat-card-title>
+      </mat-card-header>
+      <div class="card-body">
+        <p class="news"><mat-icon>turned_in</mat-icon>12/20/2020 Database construction</p>
+        <p class="news"><mat-icon>turned_in</mat-icon>06/30/2021 The database is online</p>
+      </div>
+    </mat-card>
+  </div>
+  <mat-card  appMaterialElevation defaultElevation="4" raisedElevation="4">
+    <mat-card-header>
+      <mat-card-title>Sample summary</mat-card-title>
+    </mat-card-header>
+    <div echarts [options]="statDist" style="height: 580px"></div>
+  </mat-card>
+</div>

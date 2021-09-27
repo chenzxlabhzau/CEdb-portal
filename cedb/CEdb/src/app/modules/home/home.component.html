@@ -1,0 +1,23 @@
+
+  <div class="jumbotron" style="margin-top: 10px">
+    <h2>CenhANCER: Cancer Enhancer Database</h2>
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="60%">
+        <p>Enhancers are DNA-regulatory elements that activate gene expression. They are key factors in biological processes, and show important effects in cancers.</p>
+        <p>Here, we developed CenhANCER, a comprehensive cancer enhancer database,
+          based on H3K27ac ChIP-Seq datasets of <span style="color: red;">806 primary cancer tissues</span>, 140 adjacent
+          normal tissues and <span style="color: red;">677 cancer cell lines</span> across 49 cancer types. In total, we
+          identified <span style="color: red;">18,609,577 typical enhancers</span> and <span style="color: red;">500,657 super enhancers</span> (SE) for
+          the primary
+          tissues, and <span style="color: red;">17,970,813 typical enhancers</span>, <span style="color: red;">435,313 super enhancers</span> for the cell lines.
+          To strengthen the regulatory roles of the super-enhancers, we further integrated
+          expression quantitative trait locus (<span style="color: red;">eQTLs</span>)
+          , and risk SNPs into CenhANCER. We also identified <span style="color: red;">transcription factors</span>, whose binding sites were enriched for enhancers in each sample, which are potential therapeutic targets.</p>
+      </div>
+      <div fxFlex="40%">
+        <img mat-card-image [src]="assets + '/imgs/regulation.png'" />
+      </div>
+    </div>
+  </div>
+  <app-data-sum></app-data-sum>
+

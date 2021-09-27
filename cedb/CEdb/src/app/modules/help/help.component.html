@@ -1,0 +1,129 @@
+<div fxLayout="column" fxFill >
+  <div fxFlex="none">
+    <h1 class="page-header" style="margin-top: 30px">Help</h1>
+  </div>
+  <div fxLayout="column" fxFlex class="not-float" fxLayoutGap="10px">
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>Introduction</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Cenhancer is the largest database of enhancers, as well as the first one of cancer
+          enhancers. We designed a user-friendly webpage for the database. In Cenhancer,
+          users can: 1) Browse and search all enhancers and super-enhancers in a specific
+          sample; 2) Browse and search super enhancers associated to a specific gene or
+          in a specific genomic region within some cancer type; and 3) Download typical
+          enhancers, super-enhancers and transcription factors of all the samples.
+        </p>
+        <p>
+          CenhANCER is a comprehensive cancer enhancer database,
+          based on H3K27ac ChIP-Seq datasets of 806 primary cancer tissues, 140 adjacent
+          normal tissues and 677 cancer cell lines across 49 cancer types. In total, we
+          identified 18,609,577 typical enhancers and 500,657 super enhancers for the primary
+          tissues, and 17,970,813 typical enhancers, 435313 super enhancers for the cell
+          lines. To strengthen the regulatory roles of the super enhancers, we further
+          integrated expression quantitative trait locus (eQTLs) from Genotype-Tissue
+          Expression (GTEx) and PancanQTL, and risk SNPs from Genome-Wide Association
+          Studies (GWAS)into CenhANCER. We also enriched for transcription factors in
+          each sample, which are potential therapeutic targets.
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>Dataset summary</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          To build a cancer enhancer database, we thus manually curated all public
+          ChIP-Seq data of H3K27ac, which is well recognized as a marker for active
+          enhancers, of primary cancer tissues and cell lines from GEO database.
+          After excluded the mutated and chemically treated samples, we finally got 806
+          primary tissue and 677 cell line samples across 49 cancer types. A standard
+          peak calling, super-enhancer detection, and transcription factor enrichment
+          pipeline was conducted for all samples. In total, we identified 36,580,390
+          typical enhancers, 935,970 super enhancers and 178,772 TFs for all samples.
+          Besides, as the eQTLs provide the most solid associations between
+          super-enhancers and their target genes, we annotated the super enhancers
+          with 23,450,240 GTEx eQTLs, 5,064,538 cancer eQTLs and 133,877 GWAS risk SNPs.
+          With the high-quality cancer enhancer candidates and potential therapeutic TFs,
+          Cenhancer will be highly attractive to cancer researchers.
+        </p>
+      </mat-card-content>
+      <mat-card  appMaterialElevation defaultElevation="4" raisedElevation="4">
+        <mat-card-header>
+          <mat-card-title>Sample summary</mat-card-title>
+        </mat-card-header>
+        <div echarts [options]="statDist" style="height: 580px"></div>
+      </mat-card>
+    </mat-card>
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>Function modules</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+              <ol>
+                <li>Data-browse module: Users can browser all the sample we collected.
+                  This module support some information of our samples like sample id,
+                  cancer type data source, source type and super enhancer number we
+                  identified. For the convenience of users, We provide filter condition
+                  of source types and cancer types in the sidebar.</li>
+                <img style="width: 900px;margin-left: 0px" mat-card-image [src]="assets + '/imgs/data-browse.png'" alt="">
+                <li>Search module: In this search module, User can search the super enhancer in a cancer type by two ways.
+                  The left panel provides a search for genes.
+                  In the right panel, User can specify a region to search.
+                  Note that the cancer type must be specified</li>
+                <img style="width: 900px;margin-left: 0px" mat-card-image [src]="assets + '/imgs/super.png'" alt="">
+                <li>Sample module: This page provides some sample infomation, like super enhancer number, GSM id of input sample and adjacent sample.
+                We counted the distribution of super enhancer and enhancer on chromosomes and also display the tepical enhancer and Transcription factor identified in this sample</li>
+                <img style="width: 900px;margin-left: 0px" mat-card-image [src]="assets + '/imgs/sample.png'" alt="">
+                <li>Enhancer module: We support the detail information about super enhancer on this page. These eQTL and SNP associated with super enhancer are provided in the table. </li>
+                <img style="width: 900px;margin-left: 0px" mat-card-image [src]="assets + '/imgs/enhancer.png'" alt="">
+              </ol>
+      </mat-card-content>
+    </mat-card>
+    <mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+      <mat-card-header>
+        <mat-card-title>Data collection and process</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <h6>Data collection</h6>
+        <p>
+          We use NCBI eutilty restful web tools to down all meta information for samples correlated to cancer and
+          H3K27ac. Then, we only include samples from homo sapien. Totally, we collected 215 projects. In order
+          to get the corresponding Input control sample of every H3K27ac ChIP-Seq data, we manually check
+          every project. Some samples have no Input control, we labled this kind of samples in the sample page.
+          Any chemically treated or gene mutated samples also be fitered out.
+        </p>
+        <h6>Data processing</h6>
+        <ol>
+          <li>Quality control: raw fastq data was extracted from sra using fastq-dump. Fastqc was used to quality control. Cleaned reads were obtained by removing the adapters with fastp. </li>
+          <li>
+            Mapping: Then, bowtie1 and bowtie2 were sued for single end fastq and paired end fastq mapping respectivily. The reference genome is GRCh37 downloaded from GENCODE.
+          </li>
+          <li>
+            Peak calling: Broad peak was called using macs2 with parameter “-p 1e-5 --broad --broad-cutoff 1e-5 --nomodel --extsize 147”.
+          </li>
+          <li>
+            Super-enhancer detecting: Super enhancer was called using the software ROSE.
+          </li>
+          <li>
+            TF enrichment: Transcription factor was enriched by the HOMER script findMotifsGenome.pl.
+          </li>
+          <li>
+            eQTL overlapping: GTEx eQTL was download from GTEx portal (https://gtexportal.org/home/datasets). We use the cis-eQTL result of GTEx analysis V7.
+          </li>
+          <li>
+            Cancer eQTL: the cancer eQTL was downloaded from the database PancanQTL (http://bioinfo.life.hust.edu.cn/PancanQTL/).
+          </li>
+          <li>
+            GWAS risk SNP: all GWAS SNPS were downloaded from the GWAS catalog (https://www.ebi.ac.uk/gwas/downloads).
+          </li>
+        </ol>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

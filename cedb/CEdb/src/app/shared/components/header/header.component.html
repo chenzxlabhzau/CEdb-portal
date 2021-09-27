@@ -1,0 +1,58 @@
+<header>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container" style="justify-content: flex-start">
+
+        <div class="navbar-header">
+            <a routerLink="/"><img height="42px" [src]="assets + '/imgs/logo.png'" alt="EVA" /></a>
+        </div>
+      <ul class="navbar-nav" >
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="navactive"  [routerLinkActiveOptions]="{ exact: true }">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/browse" routerLinkActive="navactive" >
+            Browse
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/super" routerLinkActive="navactive">
+            SE
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/typical" routerLinkActive="navactive">
+            TE
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tf" routerLinkActive="navactive">
+            TF
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/statistics" routerLinkActive="navactive">
+            Statistics
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/download" routerLinkActive="navactive">
+            Download
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/help" routerLinkActive="navactive">
+            Help
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact" routerLinkActive="navactive">
+            Contact
+          </a>
+        </li>
+        </ul>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,44 @@
+<mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-progress-bar mode="query" color="warn"></mat-progress-bar>
+  </div>
+
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortDisableClear>
+    <ng-container matColumnDef="rsid">
+      <mat-header-cell *matHeaderCellDef>SNP id</mat-header-cell>
+      <mat-cell *matCellDef="let enhancer">
+        <a href="https://www.ncbi.nlm.nih.gov/snp/{{ enhancer.rsid }}">{{ enhancer.rsid }}</a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="loci">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Position</mat-header-cell>
+      <mat-cell *matCellDef="let enhancer">
+        <ng-container>
+          {{ enhancer.chr }}: {{ enhancer.start | number }} - {{ enhancer.end | number }}
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="gene">
+      <mat-header-cell *matHeaderCellDef>Gene</mat-header-cell>
+      <mat-cell *matCellDef="let enhancer">{{ enhancer.gene }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="fdr">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>FDR</mat-header-cell>
+      <mat-cell *matCellDef="let enhancer">{{ enhancer.fdr }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="phenotype">
+      <mat-header-cell *matHeaderCellDef>Phenotype</mat-header-cell>
+      <mat-cell *matCellDef="let enhancer">{{ enhancer.phenotype }}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+
+  <mat-paginator [length]="dataSource.resultLength" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+</mat-card>
+

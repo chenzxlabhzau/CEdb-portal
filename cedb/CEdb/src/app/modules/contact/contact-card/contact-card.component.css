@@ -1,0 +1,9 @@
+canvas {
+  transition: 350ms;
+  border-radius: 4px;
+}
+
+img {
+  width: 200px;
+}
+

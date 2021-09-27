@@ -1,0 +1,32 @@
+.example-full-width {
+  width: 100px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.mat-column-peak_id {
+  flex: 0 0 110px;
+  padding-right: 0px;
+}
+.mat-column-chr {
+  flex: 0 0 70px;
+}
+
+.mat-column-strand {
+  flex: 0 0 70px;
+}
+.mat-column-nearest_gene {
+  flex: 0 0 140px;
+}
+
+
+
+
+
+
+

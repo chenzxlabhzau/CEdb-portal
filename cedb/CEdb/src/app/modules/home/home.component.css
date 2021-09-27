@@ -1,0 +1,11 @@
+.container{
+  padding: 0;
+  padding-top: 2%;
+}
+img {
+  width: 100%;
+  margin: 0;
+}
+.mat-card-image:first-child{
+  margin-top: 0;
+}

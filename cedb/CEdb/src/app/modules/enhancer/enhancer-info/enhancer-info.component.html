@@ -1,0 +1,58 @@
+<mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+  <mat-card-header>
+    <mat-card-title style="align-items: center;"><mat-icon>assessment</mat-icon> Basic information</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayout="row" *ngIf="enhancerBasicInfo as enhancer; else loading">
+      <dl fxFlex="50%">
+        <dt>Enhancer id</dt>
+        <dd>
+          {{ enhancer.enhancer_id }}
+        </dd>
+        <dt>Nearest gene name</dt>
+        <dd>{{ enhancer.nearest_gene_name }}</dd>
+        <dt>Entrez ID</dt>
+        <dd><a href="https://www.ncbi.nlm.nih.gov/gene/?term={{enhancer.entrez_id}}" target="_blank">{{ enhancer.entrez_id }}</a></dd>
+        <dt>Gene description</dt>
+        <dd>{{ enhancer.gene_description }}</dd>
+        <dt>Biosample type</dt>
+        <dd>{{ enhancer.Biosample_type }}</dd>
+        <dt>Cancer type</dt>
+        <dd>{{ enhancer.Cancer_type }}</dd>
+        <dt>Sample id</dt>
+        <dd><a [routerLink]="['/sample', enhancer.sample_id]" target="_blank">{{ enhancer.sample_id }}</a></dd>
+        <dt>GSE id</dt>
+        <dd><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{ enhancer.GEO_id }}" target="_blank">{{ enhancer.GEO_id }}</a></dd>
+        <dt>GSM_id</dt>
+        <dd><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{ enhancer.GSM_id }}" target="_blank">{{ enhancer.GSM_id }}</a></dd>
+
+
+      </dl>
+      <dl fxFlex="50%">
+        <dt>Peak score</dt>
+        <dd>{{ enhancer.peak_score | number }}</dd>
+        <dt>Position</dt>
+        <dd>{{ enhancer.chr }}: {{ enhancer.start | number }} - {{ enhancer.end | number }}</dd>
+        <dt>Length</dt>
+        <dd>{{ enhancer.length | number }}</dd>
+        <dt>Genome annotation</dt>
+        <dd>{{ enhancer.genome_annotate }}</dd>
+        <dt>Detail annotation</dt>
+        <dd>{{ enhancer.detail_annotation }}</dd>
+        <dt>Distance to TSS</dt>
+        <dd>{{ enhancer.distance_to_TSS | number }}</dd>
+        <dt>Cancer eQTL number</dt>
+        <dd>{{ enhancer.cancer_eQTL_number |number }}</dd>
+        <dt>GWAS SNP number</dt>
+        <dd>{{ enhancer.GWAS_SNP_number |number }}</dd>
+        <dt>GTEx eQTL number</dt>
+        <dd>{{ enhancer.GTEx_eQTL_number |number }}</dd>
+
+      </dl>
+    </div>
+
+    <ng-template #loading>
+      <mat-progress-bar mode="query" color="warn"></mat-progress-bar>
+    </ng-template>
+  </mat-card-content>
+</mat-card>

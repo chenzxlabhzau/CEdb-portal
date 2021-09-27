@@ -1,0 +1,7 @@
+<app-header></app-header>
+<div class="container">
+  <router-outlet>
+      <mat-progress-bar class="container" style="z-index: 9999" mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+  </router-outlet>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,11 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div>
+    <h1 class="page-header" style="margin-top: 30px">Super enhancer</h1>
+  </div>
+  <div fxFlex="grow" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+    <app-super-gene mat-card (genesearch)="changegene($event)" fxFlex="50%" style="max-height: 100%"  appMaterialElevation defaultElevation="4" raisedElevation="4"></app-super-gene>
+    <app-super-region mat-card (regionsearch)="changeregion($event)" fxFlex="50%" style="max-height: 100%"  appMaterialElevation defaultElevation="4" raisedElevation="4"></app-super-region>
+  </div>
+  <app-super-result *ngIf="showtable" [cancer]="cancer" [source]="source" [query]="query" [chr]="chr" [end]="end" [start]="start"></app-super-result>
+</div>
+

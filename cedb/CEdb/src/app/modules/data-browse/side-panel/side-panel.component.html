@@ -1,0 +1,17 @@
+<mat-card style="padding: 0">
+  <div class="card-header">Cancer type</div>
+  <mat-selection-list class="cancers" style="padding: 0" #cancer (selectionChange)="cancersSelection(cancer.selectedOptions.selected)" [multiple]="true">
+    <mat-list-option *ngFor="let cancer of cancers" [value]="cancer">
+      {{cancer}}
+    </mat-list-option>
+  </mat-selection-list>
+</mat-card>
+<mat-divider style="margin-top: 1%"></mat-divider>
+<mat-card style="padding: 0">
+  <div class="card-header">Source type</div>
+  <mat-selection-list style="padding: 0" #source (selectionChange)="sourceSelection(source.selectedOptions.selected)" [multiple]="true">
+    <mat-list-option *ngFor="let source of sources" [value]="source">
+      {{source}}
+    </mat-list-option>
+  </mat-selection-list>
+</mat-card>

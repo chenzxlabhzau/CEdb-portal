@@ -1,0 +1,29 @@
+<mat-card style="padding: 0">
+  <div class="card-header">peak type</div>
+  <mat-selection-list style="padding: 0" #source (selectionChange)="peakSelection(source.selectedOptions.selected)" [multiple]="true">
+    <mat-list-option *ngFor="let source of peaks" [value]="source">
+      {{source}}
+    </mat-list-option>
+  </mat-selection-list>
+</mat-card>
+<mat-divider style="margin-top: 3%"></mat-divider>
+<mat-card style="padding: 0">
+  <div class="card-header">Cancer type</div>
+  <mat-selection-list class="cancers"  style="padding: 0" [(ngModel)]="selectedOptions" #cancer (selectionChange)="cancersSelection(cancer.selectedOptions.selected)" [multiple]="false">
+    <mat-list-option #option *ngFor="let cancer of cancers" [value]="cancer" checkboxPosition="before">
+      {{cancer}}
+<mat-icon  style="font-size: 20px;height: 20px ;width: 20px;padding: 0px;position: relative;float: left;" [ngClass]="{'selected': option.selected}" mat-list-icon>
+      radio_button_{{option.selected ? '': 'un'}}checked</mat-icon
+    >
+    </mat-list-option>
+  </mat-selection-list>
+</mat-card>
+<mat-divider style="margin-top: 3%"></mat-divider>
+<mat-card style="padding: 0">
+  <div class="card-header">Source type</div>
+  <mat-selection-list style="padding: 0" #source (selectionChange)="sourceSelection(source.selectedOptions.selected)" [multiple]="true">
+    <mat-list-option *ngFor="let source of sources" [value]="source">
+      {{source}}
+    </mat-list-option>
+  </mat-selection-list>
+</mat-card>

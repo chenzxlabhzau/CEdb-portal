@@ -1,0 +1,59 @@
+<mat-card fxLayout="column" >
+  <mat-card-header>
+    <mat-card-title >Search by Region</mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="padding: 15px" fxLayout="column">
+    <p>
+      Some super enhancers usually distributed in the intergenic region of genome. We provide an accurate
+      search interface to get super enhancers lay in a specific region. In addition, you can search by setting only one side of the position.  Here is the example: chr17:70,117,161-71,122,560.
+    </p>
+    <div fxLayout="row"  fxLayoutAlign="space-between">
+      <mat-form-field appearance="standard">
+        <mat-label>Source</mat-label>
+        <mat-select placeholder="test" (selectionChange)="selectsource($event)">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let source of Sources" [value]="source">
+            {{source}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Cancer</mat-label>
+        <mat-select placeholder="test" [(value)]="cancer">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let cancer of Cancers" [value]="cancer">
+            {{cancer}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <form fxLayout="row"  fxLayoutAlign="space-between" fxLayoutGap="10px">
+      <mat-form-field appearance="standard" class="example-full-width">
+        <mat-label>chr</mat-label>
+        <mat-select [(value)]="chr">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let chr of chrs" [value]="chr">
+            {{chr}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="standard" class="example-full-width">
+        <mat-label>Start</mat-label>
+        <input type="number" [formControl]="startFormControl" matInput>
+        <button mat-icon-button (click)="search()" color="warn" matSuffix>
+          <mat-icon style="font-weight: bold">search</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field appearance="standard" class="example-full-width">
+        <mat-label>End</mat-label>
+        <input type="number" [formControl]="endFormControl" matInput>
+        <button mat-icon-button (click)="search()" color="warn" matSuffix>
+          <mat-icon style="font-weight: bold">search</mat-icon>
+        </button>
+      </mat-form-field>
+
+    </form>
+  </mat-card-content>
+</mat-card>
+

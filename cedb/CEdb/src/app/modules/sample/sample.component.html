@@ -1,0 +1,29 @@
+<div fxLayout="column" fxFill >
+  <div fxFlex="none">
+    <h1 class="page-header" style="margin-top: 30px">Sample information</h1>
+  </div>
+  <div fxFlex class="not-float">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <app-sample-basic-info fxFlex="grow" [sampleBasicInfo]="sampleBasicInfo"></app-sample-basic-info>
+      <app-enhancer-distribution [sample_id]="sample_id"></app-enhancer-distribution>
+      <div fxFlex fxLayout="column" class="not-float">
+        <div fxFlex>
+          <mat-tab-group  mat-align-tabs="start" dynamicHeight color="warn">
+            <mat-tab>
+              <ng-template mat-tab-label>Super enhancer</ng-template>
+              <app-super-enhancer [sample_id]="sample_id"></app-super-enhancer>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>Typical enhancer</ng-template>
+              <app-typical-enhancer [sample_id]="sample_id"></app-typical-enhancer>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>Transcription factor</ng-template>
+              <app-tf [sample_id]="sample_id"></app-tf>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

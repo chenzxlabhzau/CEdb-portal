@@ -1,0 +1,48 @@
+<mat-card fxLayout="column" >
+  <mat-card-header>
+    <mat-card-title >Search by Gene</mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="padding: 15px" fxLayout="column">
+    <p>
+      Super enhancer is a key cis-regulation element in genome. Here, we provide an search interface to retrive the super enhacners across individuals in cancers by the proxmal gene name. Users will get all super enhancers detected in each individual. More detail information is accessable in help page.
+    </p>
+
+    <div fxLayout="row"  fxLayoutAlign="space-between">
+      <mat-form-field appearance="standard">
+        <mat-label>Source</mat-label>
+        <mat-select placeholder="test" (selectionChange)="selectsource($event)">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let source of Sources" [value]="source">
+            {{source}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Cancer</mat-label>
+        <mat-select placeholder="test" [(value)]="cancer">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let cancer of Cancers" [value]="cancer">
+            {{cancer}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <form>
+      <mat-form-field appearance="standard" class="example-full-width" [color]="isLegalInput ? 'primary' : 'warn'">
+        <mat-label>Input your interested Gene symbol</mat-label>
+        <input matInput placeholder="Ex. TP53." [formControl]="searchFormControl" type="text" />
+
+        <button mat-icon-button (click)="search()" color="warn" matPrefix>
+          <mat-icon style="font-weight: bold;">search</mat-icon>
+        </button>
+        <mat-hint *ngIf="!isLegalInput" class="illegal">
+          <mat-chip-list>
+            <mat-chip color="warn" selected>Warning!: Input is illegal, please input valid symbol.</mat-chip>
+          </mat-chip-list>
+        </mat-hint>
+
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>

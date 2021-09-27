@@ -1,0 +1,49 @@
+<mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+  <mat-card-header>
+    <mat-card-title style="align-items: center;"><mat-icon>assessment</mat-icon> Basic information</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div fxLayout="row" *ngIf="sampleBasicInfo as sample; else loading">
+      <dl fxFlex="40%">
+        <dt>Sample id</dt>
+        <dd>
+          {{ sample.sample_id }}
+        </dd>
+        <dt>Cancer type</dt>
+        <dd>{{ sample.cancer_nor }}</dd>
+        <dt>GSE id</dt>
+        <dd><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{ sample.GEO_id }}" target="_blank">{{ sample.GEO_id }}</a></dd>
+        <dt>GSM_id</dt>
+        <dd><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{ sample.GSM_id }}" target="_blank">{{ sample.GSM_id }}</a></dd>
+        <dt>Biosample type</dt>
+        <dd>{{ sample.Biosample_type }}</dd>
+        <dt>Layout</dt>
+        <dd>{{ sample.layout }}</dd>
+
+      </dl>
+      <dl fxFlex="40%">
+        <dt *ngIf="sample.cell_line!=''" >Cell line</dt>
+        <dd *ngIf="sample.cell_line!=''">
+          {{ sample.cell_line }}
+        </dd>
+        <dt>Super enhancer number</dt>
+        <dd>
+          {{ sample.super_enhancer_number | number }}
+        </dd>
+        <dt>Mesh term</dt>
+        <dd><a href="https://meshb.nlm.nih.gov/record/ui?ui=={{ sample.cancer_id }}" target="_blank">{{ sample.cancer_id }}</a></dd>
+        <dt>Input</dt>
+        <dd *ngIf="sample.input != ''; else empty"><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{ sample.input }}" target="_blank">{{ sample.input }}</a></dd>
+        <dt>Adjacent</dt>
+        <dd *ngIf="sample.normal != ''; else empty"><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{ sample.normal }}" target="_blank">{{ sample.normal }}</a></dd>
+        <dt>Adjacent input</dt>
+        <dd *ngIf="sample.normal_input != ''; else empty"><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc={{ sample.normal_input }}" target="_blank">{{ sample.normal_input }}</a></dd>
+      </dl>
+    </div>
+
+    <ng-template #loading>
+      <mat-progress-bar mode="query" color="warn"></mat-progress-bar>
+    </ng-template>
+    <ng-template #empty><dd>No sample</dd></ng-template>
+  </mat-card-content>
+</mat-card>

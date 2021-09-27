@@ -1,0 +1,73 @@
+.content{
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+}
+
+.stat-column{
+  padding: 0.5rem 0.5rem;
+  flex: 1 1 0%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+}
+.stat-row{
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    position: relative;
+    outline: none;
+}
+.stat-card{
+  padding: 0.2rem;
+  flex: 1 1 0%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+}
+.stat-title{
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+  width: 120px;
+}
+.stat-span{
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  position: relative;
+  outline: none;
+}
+.stat-container{
+    flex: 1 1 100%;
+    box-sizing: border-box;
+    max-width: 100%;
+    flex-direction: row;
+    display: flex;
+}
+.mat-divider {
+padding-left: 10px;
+  padding-right: 10px;
+}
+.news{
+    display: flex;
+    align-items: center;
+}
+.mat-card-subtitle{
+  margin-left: 10px;
+  margin-bottom: -5px;
+}

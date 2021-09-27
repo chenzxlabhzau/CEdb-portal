@@ -1,0 +1,18 @@
+<div fxFlex="grow" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" class="overview">
+  <mat-card fxFlex="50%" appMaterialElevation defaultElevation="4" raisedElevation="4">
+    <mat-card-header>
+      <mat-card-title>
+        The distribution of super enhancers on chromosomes
+      </mat-card-title>
+    </mat-card-header>
+    <div echarts [options]="SuperEnhancer" class="chart-hight"></div>
+  </mat-card>
+  <mat-card fxFlex="50%" appMaterialElevation defaultElevation="4" raisedElevation="4">
+    <mat-card-header>
+      <mat-card-title>
+        The distribution of typical enhancers on chromosomes
+      </mat-card-title>
+    </mat-card-header>
+    <div echarts [options]="TypicalEnhancer" class="chart-hight"></div>
+  </mat-card>
+</div>

@@ -1,0 +1,16 @@
+.page-header{
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 2px solid #eee;
+}
+td{
+    vertical-align:middle;
+    text-align: center;
+}
+th{
+    text-align: center;
+
+}
+tr.border-bottom td {
+  border-bottom: 1px solid #dee2e6;
+}

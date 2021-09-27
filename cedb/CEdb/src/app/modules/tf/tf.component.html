@@ -1,0 +1,36 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div>
+    <h1 class="page-header" style="margin-top: 30px">Transcription factor</h1>
+  </div>
+  <div fxLayout="row"  fxLayoutAlign="space-between" style="padding: 0px 20px">
+<!--    <mat-form-field appearance="standard" class="example-full-width">-->
+<!--      <mat-label>Source</mat-label>-->
+<!--      <mat-select placeholder="test" [(value)]="source" (selectionChange)="selectsource($event)">-->
+<!--        <mat-option>None</mat-option>-->
+<!--        <mat-option *ngFor="let source of Sources" [value]="source">-->
+<!--          {{source}}-->
+<!--        </mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
+    <mat-form-field appearance="standard" class="example-full-width">
+      <mat-label>Cancer</mat-label>
+      <mat-select placeholder="test" [(value)]="cancer" (selectionChange)="selectcancer($event)">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let cancer of Cancers" [value]="cancer">
+          {{cancer}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <form>
+      <mat-form-field appearance="standard" class="example-full-width" [color]="isLegalInput ? 'primary' : 'warn'">
+        <mat-label>Input your interested Gene symbol</mat-label>
+        <input matInput placeholder="Ex. TP53." type="text" #input />
+        <button mat-icon-button color="warn" matSuffix>
+          <mat-icon style="font-weight: bold;">search</mat-icon>
+        </button>
+
+      </mat-form-field>
+    </form>
+  </div>
+  <app-tf-table [selected_cancer]="selected_cancer" [query]="query"></app-tf-table>
+</div>

@@ -1,0 +1,57 @@
+<mat-card appMaterialElevation defaultElevation="4" raisedElevation="4">
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-progress-bar mode="query" color="warn"></mat-progress-bar>
+  </div>
+
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort matSortDisableClear>
+    <ng-container matColumnDef="motif_name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Transcription factor</mat-header-cell>
+      <mat-cell *matCellDef="let sample">
+        {{ sample.motif_name }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cancer_abbr">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Cancer type</mat-header-cell>
+      <mat-cell *matCellDef="let sample">
+        {{ sample.cancer_abbr }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cancer_tf_sum">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Occurrence</mat-header-cell>
+      <mat-cell *matCellDef="let sample">
+        {{ sample.cancer_tf_sum | number }}/{{ sample.cancer_num | number }}
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="primary_num">
+      <mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="the number of the TF in primary cancer samples">Primary cancer</mat-header-cell>
+      <mat-cell *matCellDef="let sample">{{ sample.primary_num| number }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="cell_num">
+      <mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="the number of the TF in cell line samples">Cell line</mat-header-cell>
+      <mat-cell *matCellDef="let sample">{{ sample.cell_num }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="all_cancer_num">
+      <mat-header-cell *matHeaderCellDef mat-sort-header matTooltip="the number of the TF in all cancer types, and we have 1,483 samples">All cancer</mat-header-cell>
+      <mat-cell *matCellDef="let sample">{{ sample.all_cancer_num| number  }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="oddsr" >
+      <mat-header-cell *matHeaderCellDef matTooltip="Odds ratio about cancer specific. Calculate the number of TFs in one cancer and the number of TFs for all cancers using fisher test" mat-sort-header>Odd <mat-icon>contact_support</mat-icon></mat-header-cell>
+      <mat-cell *matCellDef="let sample">{{ sample.oddsr==1000? 1e500: sample.oddsr| number  }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="pvalue">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Pvalue</mat-header-cell>
+      <mat-cell *matCellDef="let sample">{{ sample.pvalue| number  }}</mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+
+  <mat-paginator [length]="dataSource.resultLength" [pageSize]="10" [pageSizeOptions]="[10, 20, 50]" showFirstLastButtons></mat-paginator>
+</mat-card>
+
+<ng-template #marked> Unavailable </ng-template>

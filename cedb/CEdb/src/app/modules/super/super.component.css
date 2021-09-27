@@ -1,0 +1,13 @@
+/*:host ::ng-deep .mat-form-field-flex {*/
+/*  padding-top: 0 !important;*/
+/*}*/
+.page-header{
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 2px solid #eee;
+}
+:host /deep/ .mat-card-header-text {
+  margin: 0;
+}
+
+
